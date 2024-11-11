@@ -56,19 +56,17 @@ echo count_b($str). "\n";
 echo count_b($num). "\n";
 
 //завдання 3
-function countElements($array) {
-    $keyCount = 0;
+function calculateTotalSum(array $arr): float {
+    $totalSum = 0;
 
-    foreach ($array as $key => $value) {
-        $keyCount++;
-
+    foreach ($arr as $value) {
         if (is_array($value)) {
-            foreach ($value as $subKey => $subValue) {
-                $keyCount++;
-            }
+            $totalSum += array_sum($value);
+        } else {
+            $totalSum += $value;
         }
     }
-    return $keyCount;
+    return $totalSum;
 }
 
 $arr = [
@@ -89,8 +87,8 @@ $arr = [
         'five' => 12,
     ],
 ];
-$result = countElements($arr);
-echo "Кількість елементів у масиві: $result\n";
+$result = calculateTotalSum($arr);
+echo "Сума елементів у масиві: $result\n";
 
 //завдання 4
 function countSquares($a, $b): float
